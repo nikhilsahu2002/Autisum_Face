@@ -1,0 +1,133 @@
+# Autism Face Feature Detection
+
+This project involves the development of a Convolutional Neural Network (CNN) model to detect autism spectrum disorder (ASD) using facial features. The model is trained using various extracted facial parts and calculates eye alignment as an additional feature.
+
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Directory Structure](#directory-structure)
+- [Usage](#usage)
+- [Model Training](#model-training)
+- [Code Explanation](#code-explanation)
+  - [1. Importing Libraries](#1-importing-libraries)
+  - [2. Extracting Face Parts](#2-extracting-face-parts)
+  - [3. Loading Images](#3-loading-images)
+  - [4. Data Preparation](#4-data-preparation)
+  - [5. Model Creation](#5-model-creation)
+  - [6. Training the Model](#6-training-the-model)
+- [Results](#results)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
+
+## Introduction
+
+This project aims to detect autism spectrum disorder through facial feature analysis. The key steps include extracting facial parts such as the eyes, nose, lips, upper face, middle face, philtrum, and chin. Additionally, eye alignment is calculated as a feature, which can help identify specific traits associated with ASD.
+
+## Prerequisites
+
+- Python 3.6 or higher
+- Basic understanding of CNNs and image processing
+- TensorFlow and Keras for deep learning
+- OpenCV for image processing
+- MTCNN for face detection
+
+## Installation
+
+1. Clone the repository:
+   bash
+   git clone https://github.com/yourusername/autism-face-feature-detection.git
+   cd autism-face-feature-detection
+
+2. Install required packages:
+   bash
+   pip install -r requirements.txt
+
+3. Ensure you have the necessary image dataset in the specified directory.
+
+## Directory Structure
+
+autism-face-feature-detection/
+│
+├── autism_detection.py # Main script with data processing and model training
+├── requirements.txt # Required packages for the project
+├── README.md # Project documentation
+│
+├── data/
+│ ├── train/
+│ │ ├── autistic/ # Directory containing images of autistic individuals
+│ │ └── non_autistic/ # Directory containing images of non-autistic individuals
+│ └── test/ # Test images
+│
+└── models/ # Saved models
+
+## Usage
+
+To use the script for training the model, follow these steps:
+
+1. Place your training and testing images in the respective directories (`data/train` and `data/test`).
+
+2. Run the `autism_detection.py` script:
+   bash
+   python autism_detection.py
+
+3. The model will be trained and saved in the `models/` directory.
+
+## Model Training
+
+The model uses a CNN to classify whether an individual has autism based on extracted facial features. The training process involves:
+
+1. **Image Loading**: Images are loaded from the directories and facial parts are extracted.
+2. **Feature Extraction**: Facial features like eyes, nose, lips, upper face, middle face, philtrum, and chin are extracted. Eye alignment is calculated as an additional feature.
+3. **Model Training**: A CNN model is trained using these features.
+4. **Evaluation**: The model is evaluated on a test set, and performance metrics are displayed.
+
+## Code Explanation
+
+### 1. Importing Libraries
+
+Necessary libraries for image processing, model building, and data augmentation are imported.
+
+### 2. Extracting Face Parts
+
+The `extract_face_parts` function extracts various facial parts and calculates eye alignment. It takes an image and keypoints as input and returns the extracted parts.
+
+### 3. Loading Images
+
+The `load_images` function loads images from the directory and extracts facial parts using the `extract_face_parts` function. It also prepares the dataset for training.
+
+### 4. Data Preparation
+
+The `concatenate_parts` function combines the extracted facial parts into a single array for training. The dataset is split into training and test sets.
+
+### 5. Model Creation
+
+The `create_model` function defines the CNN architecture. It takes the facial parts and eye alignment as input features.
+
+### 6. Training the Model
+
+The model is trained using data augmentation techniques to improve robustness. Early stopping and learning rate reduction callbacks are used to prevent overfitting.
+
+## Results
+
+The results of the model are displayed, including the test loss and accuracy. The trained model is saved in the `models/` directory for further use or evaluation.
+
+## Contributing
+
+Contributions are welcome! If you have any ideas or improvements, feel free to create a pull request.
+
+1. Fork the repository.
+2. Create a new branch: `git checkout -b feature-branch`.
+3. Make your changes and commit them: `git commit -m 'Add new feature'`.
+4. Push to the branch: `git push origin feature-branch`.
+5. Open a pull request.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Contact
+
+If you have any questions or suggestions, please contact me at [your.email@example.com](nikhilmca.uu@gmail.com).
